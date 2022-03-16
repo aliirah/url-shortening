@@ -17,8 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', [\App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
+    Route::post('shorten', [\App\Http\Controllers\HomeController::class, 'shortenUrl'])->name('url.shorten');
+    Route::get('{url}', [\App\Http\Controllers\HomeController::class, 'redirectToDestination'])->name('url.redirect');
+});
