@@ -50,17 +50,23 @@
                             <th class="bg-blue-100 border px-8 py-4">URL</th>
                             <th class="bg-blue-100 border px-8 py-4">CREATED AT</th>
                         </tr>
-                        @foreach($urls as $url)
+                        @if(count($urls) > 0)
+                            @foreach($urls as $url)
+                                <tr>
+                                    <td class="border px-8 py-4">
+                                        <a target="_blank" class="underline" href="{{ $url->shorten_url }}">{{ $url->shorten_url }}</a>
+                                    </td>
+                                    <td class="border px-8 py-4">
+                                        <a target="_blank" class="underline" href="{{ $url->destination }}">{{ $url->destination }}</a>
+                                    </td>
+                                    <td class="border px-8 py-4">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $url->created_at)->format('m/d/Y, g:i A') }}</td>
+                                </tr>
+                            @endforeach
+                        @else
                             <tr>
-                                <td class="border px-8 py-4">
-                                    <a target="_blank" class="underline" href="{{ $url->shorten_url }}">{{ $url->shorten_url }}</a>
-                                </td>
-                                <td class="border px-8 py-4">
-                                    <a target="_blank" class="underline" href="{{ $url->destination }}">{{ $url->destination }}</a>
-                                </td>
-                                <td class="border px-8 py-4">{{ $url->created_at }}</td>
+                                <td colspan="3" class="text-center py-5 italic font-bold text-gray-400">No Data</td>
                             </tr>
-                        @endforeach
+                        @endisset
                     </table>
                 </div>
             </div>
