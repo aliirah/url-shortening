@@ -29,10 +29,10 @@ class HomeController extends Controller
     public function shortenUrl(ShortenUrlRequest $request): RedirectResponse
     {
         $slug = generateSlugForUrl();
-        $isCreated = Url::create($request->only('destination') +
+        $urlCreated = Url::create($request->only('destination') +
             ['slug' => $slug]
         );
-        $isCreated
+        $urlCreated
             ? Alert::success('Successfully', 'Shorten url generated successfully')
             : Alert::errot('Error', 'Oops! Something happened');
 
