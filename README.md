@@ -1,9 +1,9 @@
-#Url Shortening
+# Url Shortening
 
 ## Run Locally
 
-####Copy .env.example and rename it to .env and configure it.
-####Make sure that you have DB connection
+#### Copy .env.example and rename it to .env and configure it.
+#### Make sure that you have DB connection
 
 Go to the project directory
 
