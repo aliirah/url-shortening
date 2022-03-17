@@ -69,7 +69,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    // TODO you can change it to other timezones
+    'timezone' => 'ASIA/TEHRAN',
 
     /*
     |--------------------------------------------------------------------------
@@ -176,6 +177,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        \App\Providers\RestFacadesServiceProvider::class
 
     ],
 
@@ -191,7 +193,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // ...
+        'RestClass' => \App\Facades\Rest\Rest::class,
     ])->toArray(),
 
 ];
